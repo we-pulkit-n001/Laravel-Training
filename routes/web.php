@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CollectionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
@@ -36,3 +37,5 @@ Route::get('/get-session', [HomeController::class, 'getSession']);
 Route::get('/delete-session', [HomeController::class, 'deleteSession']);
 
 route::get('/relation', [MemberController::class, 'index']);
+
+route::get('/collection', [CollectionController::class, 'index']);

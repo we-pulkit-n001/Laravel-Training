@@ -7,12 +7,18 @@ use App\Models\Branch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Response;
+use App\Http\Traits\QueryTrait;
 
 class HomeController extends Controller
 {
 
+    use  QueryTrait;
+
     public function index(Request $request)
     {
+        $user_data = $this->getUserDetails(50);
+        dd($user_data);
+
         $users = User::factory()->count(5)->make();
         $branches = Branch::factory()->count(5)->make();
 
