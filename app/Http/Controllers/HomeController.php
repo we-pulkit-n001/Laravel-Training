@@ -16,6 +16,9 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
+        $testData = User::get()->random()->id;
+        dd($testData);
+
         $user_data = $this->getUserDetails(50);
         dd($user_data);
 
@@ -99,5 +102,10 @@ class HomeController extends Controller
         session()->forget('email');
         session()->forget('password');
         return redirect('home');
+    }
+
+    public function testnew()
+    {
+        dd("here new");
     }
 }

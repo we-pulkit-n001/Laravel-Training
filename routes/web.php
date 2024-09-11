@@ -1,11 +1,16 @@
 <?php
 
-use App\Http\Controllers\CollectionController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MemberController;
-use App\Http\Controllers\RelationTestController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubscribeController;
+use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\RelationTestController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +24,13 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/login', [UserController::class, 'index']);
+
+Route::get('/subscribe', [SubscribeController::class, 'subscribed']);
+
+Route::get('/user', [UserController::class, 'show']);
+Route::get('/delete-user', [UserController::class, 'delete']);
+
+Route::get('/show-post', [PostController::class, 'show']);
 
 Route::get('/home', [HomeController::class, 'index']);
 
@@ -36,6 +48,17 @@ Route::get('/set-session', [HomeController::class, 'setSession']);
 Route::get('/get-session', [HomeController::class, 'getSession']);
 Route::get('/delete-session', [HomeController::class, 'deleteSession']);
 
-route::get('/relation', [MemberController::class, 'index']);
+Route::get('/relation', [MemberController::class, 'index']);
 
-route::get('/collection', [CollectionController::class, 'index']);
+Route::get('/collection', [CollectionController::class, 'index']);
+
+
+Route::get('/send-test-email', function () {
+
+    Mail::raw('This is a test email', function ($message) {
+        $message->to('test@example.com')
+            ->subject('Test Email');
+    });
+
+    return 'Test email sent!';
+});

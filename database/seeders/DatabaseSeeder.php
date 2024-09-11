@@ -7,6 +7,8 @@ namespace Database\Seeders;
 use App\Models\FakeUserData;
 use Illuminate\Database\Seeder;
 use Database\Seeders\MemberSeeder;
+use Database\Seeders\PostSeeder;
+use Database\Seeders\CommentSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,8 +26,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             // UserSeeder::class,
-            // MemberSeeder::class
-            GroupSeeder::class
+            // PostSeeder::class,
+            CommentSeeder::class
         ]);
     }
 }
